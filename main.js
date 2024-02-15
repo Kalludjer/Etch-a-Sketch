@@ -35,3 +35,36 @@ function createGrids(resolution) {
   })
 }
 
+const resetButton = document.querySelector("#reset");
+resetButton.addEventListener("click", () => {
+  container.replaceChildren();
+});
+
+let isDrawing = false;
+
+container.addEventListener("mousedown", handleMouseDown);
+container.addEventListener("mousemove", handleMouseMove);
+container.addEventListener("mouseup", handleMouseUp);
+
+container.addEventListener("dragstart", (e) => {
+  e.preventDefault();
+});
+
+container.addEventListener("drop", (e) => {
+  e.preventDefault();
+});
+
+function handleMouseDown (e) {
+  isDrawing = true;
+  e.target.style.backgroundColor = "#000";
+};
+
+function handleMouseMove (e) {
+  if (!isDrawing) return;
+  e.target.style.backgroundColor = "#000";
+
+}
+
+function handleMouseUp (e) {
+   isDrawing = false;
+}
